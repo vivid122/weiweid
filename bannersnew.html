@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>banner</title>
+	<style type="text/css">
+	body{
+		margin: 0;
+		position: relative;
+		overflow: hidden;
+	}
+	#banner{
+		width: 100%;
+		height:400px;
+	}
+	.img_change{
+		position: absolute;
+		width: 100%;
+		height: 400px;
+	}
+	.switch{
+		height: 50px;
+		width: 50px;
+		line-height: 50px;
+		font-size: 48px;
+		color: white;
+		top: 180px;
+		position: absolute;
+		cursor: pointer;
+	}
+	#left{
+		left: 50px;
+	}
+	#right{
+		right: 50px;
+	}
+	.next_left{
+		width: 100%;
+		height: 400px;
+		position: absolute;
+		-webkit-animation: next_left 1s ease-in-out;
+		-o-animation: next_left 1s ease-in-out;
+		animation: next_left 1s ease-in-out;
+		-webkit-animation-fill-mode: forwards;
+			-o-animation-fill-mode: forwards;
+			animation-fill-mode: forwards;	
+	}
+	 @keyframes next_left
+		{
+			from{left:-100%;}
+			to{left: 0px;}
+		}
+		@-webkit-keyframes next_left /* Safari and Chrome */
+		{
+			from{left: -100%;}
+			to{left: 0px;}
+		}
+	.change_left{
+		width: 100%;
+		height: 400px;
+		position: absolute;
+		-webkit-animation: change_left 1s ease-in-out;
+		-o-animation: change_left 1s ease-in-out;
+		animation: change_left 1s ease-in-out;
+		-webkit-animation-fill-mode: forwards;
+		-o-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+	}
+	 @keyframes change_left
+		{
+			from{left: 0px;}
+			to{left: 100%;}
+		}
+		@-webkit-keyframes change_left /* Safari and Chrome */
+		{
+			from{left: 0px;}
+			to{left: 100%;}
+		}
+	.next_right{
+		width: 100%;
+		height: 400px;
+		position: absolute;
+		-webkit-animation: next_right 1s ease-in-out;
+		-o-animation: next_right 1s ease-in-out;
+		animation: next_right 1s ease-in-out;
+		-webkit-animation-fill-mode: forwards;
+		-o-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+	}
+	 @keyframes next_right
+		{
+			from{left: 100%;}
+			to{left: 0px;}
+		}
+		@-webkit-keyframes next_right /* Safari and Chrome */
+		{
+			from{left: 100%;}
+			to{left: 0px;}
+		}
+	.change_right{
+		width: 100%;
+		height: 400px;
+		position: absolute;
+		-webkit-animation: change_right 1s ease-in-out;
+		-o-animation: change_right 1s ease-in-out;
+		animation: change_right 1s ease-in-out;
+		-webkit-animation-fill-mode: forwards;
+		-o-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+	}
+	 @keyframes change_right
+		{
+			from{left: 0px;}
+			to{left: -100%;}
+		}
+		@-webkit-keyframes change_right /* Safari and Chrome */
+		{
+			from{left: 0px;}
+			to{left: -100%;}
+		}
+	</style>
+</head>
+<body>
+	<div id="banner">
+		<img class="img_change" src="http://echarts.baidu.com/doc/asset/img/slide-01.png">
+		<img class="img_change" src="http://echarts.baidu.com/doc/asset/img/slide-02.png">
+		<img class="img_change" src="http://echarts.baidu.com/doc/asset/img/slide-03.png">
+		<img class="img_change" src="http://echarts.baidu.com/doc/asset/img/slide-04.png">
+		<img class="img_change" src="http://echarts.baidu.com/doc/asset/img/slide-05.jpg">
+		<img class="img_change" src="http://echarts.baidu.com/doc/asset/img/bannerX.jpg">
+	</div>
+	<div class="switch" id="left"> < </div>
+	<div class="switch" id="right"> > </div>
+
+	<script type="text/javascript">
+	var move = document.getElementsByTagName('img');
+	var left = document.getElementById('left');
+	var right = document.getElementById('right');
+	var num=5;
+	 right.onclick=function(){
+		if (num<5) {
+			move[num].className="change_right";
+			move[num+1].className="next_right";
+		}else{
+			move[num].className="change_right";
+			num=0;
+			move[num].className="next_right";
+		};
+		setTimeout(function(){move[num].className="img_change";},1000);
+		num++;
+		
+	}
+	 left.onclick=function(){
+	 	if (num>0) {
+	 		move[num].className="change_left";
+	 		move[num-1].className="next_left";
+	 	}else{
+	 		move[num].className="change_left";
+	 		num=6;
+	 		move[num-1].className="next_left";
+	 	};
+	 	setTimeout(function(){move[num].className="img_change";},1000);
+	 	num--;
+
+	 }
+
+	</script>
+</body>
+</html>
